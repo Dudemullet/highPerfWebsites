@@ -1,0 +1,49 @@
+article[name="scrollHeight"]{
+    top:0px;
+    margin-top:0px;
+    min-height:900px;
+}
+
+article[name="scrollHeight"]{
+    top:0px;
+    margin-top:0px;
+    min-height:900px;
+}
+
+.scrollSection {
+	width:100%;
+}
+#scrollWarnings {
+	background-color:#FAA0A0;
+	position:absolute;
+	height:100%;
+	width:20px;
+
+	top:0px;
+	right:0px;
+}
+#scrollOff {
+	background-color:#D4D4FF;
+
+	height:50%;
+}
+#scroll50 {
+	background-color:#C3FAC3;
+
+	height:30%;
+}
+#scroll80 {
+	background-color:#F5ED8F;
+
+	height:10%;
+}
+#scroll90 {
+	background-color:#FAA0A0;
+
+	height:10%;
+}
+
+#scrollContent p{
+	font-size:20px;
+	line-height:26px;
+}

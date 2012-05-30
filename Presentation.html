@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+
+    <!-- Googles code -->
+    <script src='default/slides.js'> </script>
+    <link href="default/styles.css" rel="stylesheet" type="text/css"></link>
+
+    <!-- My google overrides -->
+    <link href="presentationCss.css" rel="stylesheet" type="text/css"></link>
+    <script src='default/jquery-1.7.2.min.js'> </script>
+
+    <!-- JS code used on any slide will have its dedicated folder. You can find this folder by looking at that slides name in the source
+      Example:
+        <article name="domeExample"> </article> //This is a slide
+
+      All of the resources for that slide (javascript, css and/or images) can be found in the "domExample" folder.
+     -->
+  </head>
+
+  <body style='display: none'>
+    <section class='slides layout-regular template-default'>
+
+      <article name="titleScreen">
+        <h2>High performing websites,</h2>
+        <h2> why it <br />matters</h2>
+        <h3>Luis Gutierrez</h3>
+      </article>
+
+      <article name="highPerformance">
+        <h2>But what is a High performing website?</h2>
+      </article>
+
+      <article name="speed">
+        <h1>Speed</h1>
+      </article>
+
+      <article name="alertBox">
+        <h3>Need for speed</h3>
+        <a href="http://www.useit.com/alertbox/9703a.html" title="The need for speed">The need for speed</a>
+
+        <br /><br />
+        <ul>
+          <li>Less than 1 sec response time</li>
+          <li>Speed must be the overriding design criterion</li>
+          <li><i>Some</i> information fast is better than none.</li>
+        </ul>
+      </article>
+
+      <article name="alertBox2">
+        <h3>Website response times</h3>
+        <a href="http://www.useit.com/alertbox/response-times.html" title="Website response times">Website response times</a>
+
+        <br /><br />
+        <ul> 
+            <li>Big widgets causing slowness</li>
+            <li>Snappy UI beats a galmorous one</li>
+            <li>Even a 100 millisecond increase produces great benefits</li>
+        </ul>
+      </article>
+
+      <article name="otherOptimizations">
+        <h3 class="blackText">The <i>OTHER</i> optimizations</h3>
+
+        <br /><br />
+        <ul>
+          <li>Caching</li>
+          <li>Script loading at the end of the page</li>
+          <li>Cache the Array.length property</li>
+          <li>EventListener bubbling</li>
+          <li>Minification</li>
+          <li>Closures</li>
+        </ul>
+      </article>
+
+      <article name="mediaQueries">
+        <h2>Media Queries</h2>
+        <br />
+
+        <p>All media types with at least 4 bits of color:</p>
+        <pre class="prettyPrint">@media all and (min-color: 4) { ... }</pre>
+
+        <p>Screen with a max width of 800px:</p>
+        <pre class="prettyPrint">@media screen and (max-width: 800px)</pre>
+
+        <p>Printed media wider than 8.5 inches</p>
+        <pre class="prettyPrint">&#60;link rel="stylesheet" media="print and (min-width: 8.5in)"
+    href="http://www.styleSite.com/someStyle.css" /&#62;</pre>
+      </article>
+
+      <!-- article name="mediaQueries">
+        <link href="examples/mediaQueries/queries.css" rel="stylesheet" type="text/css"></link>
+        
+        <iframe id="myQueryIframe" src="http://www.get skeleton.com/"></iframe>
+
+        <div id="mediaQueryButtons">
+          <input type="button" onclick="set3gHorizontal()" value="3gs Horizontal" />
+          <input type="button" onclick="set3gVertical()" value="3gs Vertical" />
+          <input type="button" onclick="set4Horizontal()" value="4s Horizontal" />
+          <input type="button" onclick="set4Vertical()" value="4s Vertical" />
+          <input type="button" onclick="setiPadHorizontal()" value="iPad Horizontal" />
+          <input type="button" onclick="setiPadVertical()" value="iPad Vertical" />
+        </div>
+        <script src="examples/mediaQueries/queries.js"></script>
+      </article -->
+
+      <article name="scrollHeight">
+        <!-- This slides CSS -->
+        <link href="examples/scrollHeight/scroll.css" rel="stylesheet" type="text/css"></link>
+        
+        <h2>Scrolling</h2>
+        <input id="resetScrollBtn" type="button" value="Reset" />
+        <br /><br />
+        <div id="scrollWarnings">
+          <div class="scrollSection" id="scrollOff"></div>
+          <div class="scrollSection" id="scroll50" setScroll=".5"></div>
+          <div class="scrollSection" id="scroll80" setScroll=".8"></div>
+          <div class="scrollSection" id="scroll90" setScroll=".9"></div>
+        </div>
+
+        <div id="scrollContent">
+        </div>
+        
+        <script src="examples/scrollHeight/scroll.js"></script>
+      </article>
+     
+      <article name="scrollCode">
+        <pre class="prettyPrint linenums:1">
+function scrollDetected(){
+  //Area viewable based on browser window height
+  var viewableArea = document.documentElement.clientHeight;
+  var bodyHeight = document.height;
+
+  //How many pixels has the scrollbar moved in Y - 0 if no scrollbar in Y active
+  var scrollAt = window.scrollY;
+
+  //The amount of pixels you can scroll through
+  var scrollablePixels = bodyHeight-viewableArea;
+
+  //Percentage scrolled through
+  var percentageScrolled = (scrollAt*1)/scrollablePixels;
+
+  if(percentageScrolled >= updateAt){
+    $.getJSON("ipsum.json",function(response){
+      $("#scrollContent").append(response.content);
+
+      //Recursively call this
+      setTimeout(scrollDetected, 250);
+    });
+  }
+};
+        </pre>
+      </article>
+
+      <!-- DOM manipulation -->
+      <article name="domExample">
+          <h4>DOM Manipulation</h4>
+
+          <label id="timeLabel"></label> <br />
+
+          <input type="text" id="addToTable" placeholder="Rows to add"/>
+          <input type="button" value="Reset" onclick="resetDomTable()"></input>
+          <input type="button" value="Start" onclick="startAdding()"></input>
+
+          <table id="domTable">
+            <tbody id="domTableBody">
+              <tr>
+                  <td>
+                      Table Element
+                  </td>
+                  <td class="domButtons"> 
+                      <input type="image" src="images/remove.png" onclick="alertMe()" />
+                      <input type="image" src="images/add.png" onclick="domAddElement(this)" />
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- This slides Javascript -->
+          <script src="examples/domExample/domTable.js"></script>
+      </article>
+
+      <article name="domExampleCode">
+        <h3 class="blackText">Dom example code</h3>
+        <pre>function startAdding(){
+    var newElements = $("#addToTable").val();
+    var start = Date.now()
+    
+    while(newElements--){
+        domAddElement();
+    }
+
+    $("#timeLabel").text("Took: " + (Date.now()-start));
+}</pre>
+      </article>
+
+      <article name="domWithTimer">
+          <h4>DOM Manipulation</h4>
+
+          <input type="text" id="rowsToAdd" placeholder="Rows to add"/>
+          <input type="button" value="Reset" onclick="resetTimerTable()"></input>
+          <input type="button" value="Start" onclick="addToTimerTable()"></input>
+
+          <table id="tableWithTimer">
+              <tbody id="tbodyWithTimer">
+                <tr>
+                    <td>Table Element</td>
+                    <td class="domButtons"> 
+                        <input type="image" src="images/remove.png" onclick="alertMe()" />
+                        <input type="image" src="images/add.png" onclick="addElementToTimerTable()" />
+                    </td>
+                </tr>
+              </tbody>
+          </table>
+
+          <!-- This slides Javascript -->
+          <script src="examples/domWithTimer/domWithTimer.js"></script>
+      </article>
+
+      <article name="domTimerExampleCode">
+        <h3 class="blackText">Dom example code</h3>
+        <pre>function addElementToTimerTable()
+{
+    $("#tbodyWithTimer").append(tableElement);
+}
+
+function addToTimerTable(){
+    var newElements = parseInt($("#rowsToAdd").val(),10);
+
+    procesAsync(newElements,addElementToTimerTable);
+}
+
+//Call a function 'x' times
+function procesAsync(items,process,callback){
+    setTimeout(function(){
+        process();
+        items-=1;
+        if (items > 0){ 
+            setTimeout(arguments.callee, 25);
+        } 
+        else {
+            callback();
+        }
+    }, 25);
+}</pre>
+      </article>
+
+      <article name="Reflow">
+        <h2>Reflow</h2>
+        <h3>Occurs when</h3> <br /><br />
+        <ul>
+          <li>Visible DOM elements are added or removed.</li>
+          <li>Elements change position.</li>
+          <li>Content is changed (text or images being replaced).</li>
+          <li>Initial page render.</li>
+          <li>Browser window is resized.</li>
+        </ul>
+      </article>
+
+      <article name="theIntervals">
+        <h3 class="blackText">setTimeout</h3>
+        <pre>var timeoutID = window.setTimeout(func, delay, [params]);
+var timeoutID = window.setTimeout(code, delay);</pre>
+
+        <h3 class="blackText">setInterval</h3>
+        <pre>var intervalID = window.setInterval(func, delay,[params]);
+var intervalID = window.setInterval(code, delay);</pre>
+
+<pre>Timeout:
+
+.    *  .    *  .    *  .    *  .
+     [--]    [--]    [--]    [--]
+
+Interval:
+
+.    *    *    *    *    *    *
+     [--] [--] [--] [--] [--] [--]</pre>
+
+     <a href="http://stackoverflow.com/questions/729921/settimeout-or-setinterval" title="Difference between setInterval and setTimeout">Difference between setInterval and setTimeout</a>
+      </article>
+
+      <article name="batchingDomChanges">
+        <h3 class="blackText">Avoid Live DOM changes</h3>
+
+        <br /><br />
+        <ul>
+          <li>Hide the element, apply changes and then show it again.</li>
+          <li>Use element clones.</li>
+          <li>Dom fragments.</li>
+        </ul>
+      </article>
+
+      <article name="domChunks">
+          <h4>Fun Fragmentation!</h4>
+
+          <input type="text" id="chunksToAdd" placeholder="Rows to add"/>
+          <input type="button" value="Reset" onclick="resetChunkTable()"></input>
+          <input type="button" value="Start" onclick="addToChunkTable()"></input>
+
+          <table id="chunksTable">
+              <tbody id="chunksTbody">
+                <tr>
+                    <td>Table Element</td>
+                    <td class="domButtons"> 
+                        <input type="image" src="images/remove.png" onclick="alertMe()" />
+                        <input type="image" src="images/add.png" onclick="addChunk()"/>
+                    </td>
+                </tr>
+              </tbody>
+          </table>
+
+          <!-- This slides Javascript -->
+          <script src="examples/domChunks/domChunks.js"></script>
+      </article>
+
+      <article name="domChunksCode">
+        <pre>var myFragment =  document.createDocumentFragment();
+
+function addChunk()
+{
+    var newElement = $(&#60;tr&#62;TableElement&#60;/tr&#62;)[0];
+    myFragment.appendChild(newElement);
+}
+
+function addToChunkTable(){
+    var newElements = parseInt($("#chunksToAdd").val(),10);
+
+    procesAsync(newElements,addChunk, function(){
+        document.getElementById("chunksTbody").appendChild(myFragment);
+    });
+}</pre>
+      </article>
+
+      <article name="closingStatement">
+        <br /><br />
+        <h3 class="blackText">"Mobile experiences fill gaps while we wait."</h3><br /><br />
+        <h3 class="blackText">"No one wants to wait while they wait."</h3>
+        <h3>-Mike Krieger</h3>
+
+
+        <br /><br /><br />
+        <a href="http://www.fastcodesign.com/1669788/the-3-white-lies-behind-instagrams-lightning-speed" title="3 white lies      behind instagrams speed">The 3 white lies Behind Instagrams speed</a>
+      </article>
+
+      <article name="contact">
+        <h3 class="blackText">Luis Gutierrez</h3> <br /><br />
+        <h3>email:</h3><h3 class="blackText">elpaip@gmail.com</h3><br /><br />
+        <h3>twitter:</h3><h3 class="blackText">Dudemullet</h3>
+      </article>
+
+      <article name="references">
+        <h2>References</h2>
+        <ul>
+          <li>
+            <a href="http://www.useit.com/alertbox/9703a.html" title="The need for speed">The need for speed</a>
+          </li>
+
+          <li>  
+            <a href="http://www.useit.com/alertbox/response-times.html" title="Website response times">Website response times</a>
+          </li>
+
+          <li>
+            <a href="http://www.fastcodesign.com/1669788/the-3-white-lies-behind-instagrams-lightning-speed" title="3 white lies      behind instagrams speed">The 3 white lies Behind Instagrams speed</a>
+          </li>
+
+          <li>
+            <a href="http://shop.oreilly.com/product/9780596802806.do" title="High Performance Javascript">High Performance Javascript</a>
+          </li>
+
+          <li>
+            <a href="http://code.google.com/p/html5slides/" title="HTML5 Google slides">HTML5 Google slides</a>
+          </li>
+
+          <li>
+            <a href="http://stackoverflow.com/questions/729921/settimeout-or-setinterval" title="Difference between setInterval and setTimeout">Difference between setInterval and setTimeout</a>
+          </li>
+        <ul>
+      </article>
+    </section>
+  </body>
+</html>

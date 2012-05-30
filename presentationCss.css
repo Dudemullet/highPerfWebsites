@@ -1,0 +1,55 @@
+/* General Section */
+.strikethrough{
+
+    text-decoration:line-through;
+}
+
+h2 {
+    position:static;
+    line-height:100px;
+}
+h3{
+    margin:0px;
+}
+h3.blackText {
+    color:#555;
+    margin:0px;
+}
+
+ul li {
+    line-height:50px;
+}
+ul:not(.noContent) li:before {
+    content:"-";
+}
+
+.slides.template-default > article:not(.nobackground):not(.biglogo)[name="speed"]{
+    background-color:#90DCF1;
+}
+article[name="speed"] h1{
+    margin-left:160px;
+    color:#FDF854;
+    text-shadow:5px 1px 1px rgba(0, 0, 0, .1);
+}
+article[name="speed"] h1{
+    margin-left:160px;
+    color:#FDF854;
+    text-shadow:5px 1px 1px rgba(0, 0, 0, .1);
+}
+
+article[name="Reflow"] h3{
+    margin:0px;
+}
+
+article[name="closingStatement"] h3:not(.blackText){
+    position:relative;
+    right:-400px;
+}
+
+article[name="mediaQueries"] pre.prettyPrint{
+    margin:0px 0px 50px 0px;
+}
+
+article[name="theIntervals"] pre{
+    margin-top:10px;
+}
